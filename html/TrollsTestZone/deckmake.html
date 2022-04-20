@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>후루요니 덱메이커 만드는중</title>
+
+        <link rel="stylesheet" type="text/css" href="furuyoni.css">
+        <style type="text/css">
+
+        </style>
+    </head>
+    <body id="main">
+       
+        <br>
+
+        <form action='save_page.php' method='GET' onsubmit="CheckDeck(event)">    
+
+          
+
+          <br>
+          
+        <select id="job1" name="job1" onchange="chageLangSelect()">
+            <option value="" selected disabled>첫번째여신선택</option>
+            <option value="1">유리나</option>
+            <option value="2">사이네</option>
+            <option value="3">히미카</option>
+            <option value="4">토코요</option>
+        </select> 
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        <select id="job2" name="job2" onchange="chageLangSelect()">
+            <option value="" selected disabled>두번째여신선택</option>
+            <option value="1">유리나</option>
+            <option value="2">사이네</option>
+            <option value="3">히미카</option>
+            <option value="4">토코요</option>
+        </select>
+        <br>
+        <br>
+        <div class="form-group">
+          <span> 덱명 :</span>
+          <input class="form-field" type="text"  name="deckname" placeholder="예시: vs쿠루루덱">
+      </div> 
+        
+        <!-- <input type="text" name="deckname"><br/> -->
+        
+     
+        설명 :  <br>
+         <textarea id = "decktext" name="decktext" rows="8" cols="85"></textarea> 
+  
+        <!-- form action='login_page.php'>
+            ID : <input id='userid' type='text'/><br>
+            비밀번호 : <input id='pwd' type='password'/><br>
+            <input type='submit' value = '로그인'>
+          </form-->
+
+          <!--form action='login_page.php'>
+            <input type='button' 
+                   value='선택' 
+                   onclick="chageLangSelect()"
+            />
+          </form-->
+
+
+          <!-- form action='a.jsp'>
+            성별<br>
+            <input type='checkbox' name='gender' value='female' />여성
+            <input type='checkbox' name='gender' value='male' />남성
+            <br>
+            좋아하는 과일<br>
+            <input type='checkbox' name='fruits' value='apple' />사과
+            <input type='checkbox' name='fruits' value='banana' />바나나
+            <input type='checkbox' name='fruits' value='orange' />오렌지
+            <br>
+            <input type='submit'>
+          </form -->
+<input type="hidden" id="deckcode1" name="deckcode1" value= "0" />
+<input type="hidden" id="deckcode2" name="deckcode2"  value= "0"/>
+
+
+
+<table border="0" width = "470">
+	<th> </th>
+	<th> </th>
+
+  <tr><!-- 첫번째 줄 시작 --> 
+    <td> <input type="hidden" id="c0" name="c0" onclick="DeckMakeCode1(this)" />
+      <label for="c0"><span></span></label>
+      <div id="c0text" style="display:none"></div>
+      <img id="c0png" src="" width="100" style="display:none"></td>
+
+    <td>  <input type="hidden" id="rc0" name="rc0" onclick="DeckMakeCode2(this)"/>
+      <label for="rc0"><span></span></label>
+      <div id="rc0text" style="display:none"></div>
+      <img id="rc0png" src="" width="100" style="display:none"> </td>
+</tr><!-- 첫번째 줄 끝 -->
+
+
+
+<tr><!-- 두번째 줄 시작 -->
+  <td>   <input type="hidden" id="c1" name="c1" onclick="DeckMakeCode1(this)" />
+    <label for="c1"><span></span></label>
+    <div id="c1text" style="display:none"></div>
+    <img id="c1png" src="" width="100" style="display:none"></td>
+
+  <td>  <input type="hidden" id="rc1" name="rc1" onclick="DeckMakeCode2(this)"/>
+    <label for="rc1"><span></span></label>
+    <div id="rc1text" style="display:none"></div>
+    <img id="rc1png" src="" width="100" style="display:none"> </td>
+</tr><!-- 두번째 줄 끝 -->
+
+<tr><!-- 세번째 줄 시작 -->
+  <td>  <input type="hidden" id="c2" name="c2" onclick="DeckMakeCode1(this)"/>
+    <label for="c2"><span></span></label>
+    <div id="c2text" style="display:none"></div>
+    <img id="c2png" src="" width="100" style="display:none"> </td>
+
+  <td>  <input type="hidden" id="rc2" name="rc2"onclick="DeckMakeCode2(this)" />
+    <label for="rc2"><span></span></label>
+    <div id="rc2text" style="display:none"></div>
+    <img id="rc2png" src="" width="100" style="display:none"> </td>
+</tr><!-- 세번째 줄 끝 -->
+
+<tr><!-- 네번째 줄 시작 -->
+  <td>
+    <input type="hidden" id="c3" name="c3" onclick="DeckMakeCode1(this)"/>
+    <label for="c3"><span></span></label>
+    <div id="c3text" style="display:none"></div>
+    <img id="c3png" src="" width="100" style="display:none">
+   </td>
+
+  <td>
+    <input type="hidden" id="rc3" name="rc3" onclick="DeckMakeCode2(this)"/>
+    <label for="rc3"><span></span></label>
+    <div id="rc3text" style="display:none"></div>
+    <img id="rc3png" src="" width="100" style="display:none"> </td>
+</tr><!-- 네번째 줄 끝 -->
+
+<tr><!-- 다번째 줄 시작 -->
+  <td>
+    <input type="hidden" id="c4" name="c4" onclick="DeckMakeCode1(this)"/>
+    <label for="c4"><span></span></label>
+    <div id="c4text" style="display:none"></div>
+    <img id="c4png" src="" width="100" style="display:none"> </td>
+  <td>  <input type="hidden" id="rc4" name="rc4" onclick="DeckMakeCode2(this)"/>
+    <label for="rc4"><span></span></label>
+    <div id="rc4text" style="display:none"></div>
+    <img id="rc4png" src="" width="100" style="display:none"> </td>
+
+</tr><!-- 다번째 줄 끝 -->
+
+<tr><!-- 여번째 줄 시작 -->
+  <td>   <input type="hidden" id="c5" name="c5" onclick="DeckMakeCode1(this)"/>
+    <label for="c5"><span></span></label>
+    <div id="c5text" style="display:none"></div>
+    <img id="c5png" src="" width="100" style="display:none"></td>
+  <td>   <input type="hidden" id="rc5" name="rc5" onclick="DeckMakeCode2(this)"/>
+    <label for="rc5"><span></span></label>
+    <div id="rc5text" style="display:none"></div>
+    <img id="rc5png" src="" width="100" style="display:none"></td>
+</tr><!-- 여번째 줄 끝 -->
+
+<tr><!-- 일곱번째 줄 시작 -->
+  <td>  <input type="hidden" id="c6" name="c6" onclick="DeckMakeCode1(this)"/>
+    <label for="c6"><span></span></label>
+    <div id="c6text" style="display:none"></div>
+    <img id="c6png" src="" width="100" style="display:none"> </td>
+  <td>  <input type="hidden" id="rc6" name="rc6" onclick="DeckMakeCode2(this)"/>
+    <label for="rc6"><span></span></label>
+    <div id="rc6text" style="display:none"></div>
+    <img id="rc6png" src="" width="100" style="display:none"> </td>
+
+</tr><!-- 일곱번째 줄 끝 -->
+
+<tr><!-- 여덟번째 줄 시작 -->
+  <td>  <input type="hidden" id="c7" name="c7" onclick="DeckMakeCode1(this)"/>
+    <label for="c7"><span></span></label>
+    <div id="c7text" style="display:none"></div>
+    <img id="c7png" src="" width="100" style="display:none"> </td>
+  <td>  <input type="hidden" id="rc7" name="rc7" onclick="DeckMakeCode2(this)" />
+    <label for="rc7"><span></span></label>
+    <div id="rc7text" style="display:none"></div>
+    <img id="rc7png" src="" width="100" style="display:none"> </td>
+</tr><!-- 여덟번째 줄 끝 -->
+
+
+<tr><!-- 아홉번째 줄 시작 -->
+  <td>   
+    <input type="hidden" id="d0" name="d0" onclick="DeckMakeCode1(this)" />
+    <label for="d0"><span></span></label>
+    <div id="d0text" style="display:none"></div>
+    <img id="d0png" src="" width="100" style="display:none"> </td>
+  <td>   <input type="hidden" id="rd0" name="rd0" onclick="DeckMakeCode2(this)"/>
+    <label for="rd0"><span></span></label>
+    <div id="rd0text" style="display:none"></div>
+    <img id="rd0png" src="" width="100" style="display:none"> </td>
+</tr><!-- 아홉번째 줄 끝 -->
+
+<tr><!-- 열번째 줄 시작 -->
+  <td>   <input type="hidden" id="d1" name="d1" onclick="DeckMakeCode1(this)" />
+    <label for="d1"><span></span></label>
+    <div id="d1text" style="display:none"></div>
+    <img id="d1png" src="" width="100" style="display:none"> </td>
+  <td>   <input type="hidden" id="rd1" name="rd1" onclick="DeckMakeCode2(this)"/>
+    <label for="rd1"><span></span></label>
+    <div id="rd1text" style="display:none"></div>
+    <img id="rd1png" src="" width="100" style="display:none"> </td>
+</tr><!-- 열번째 줄 끝 -->
+
+<tr><!-- 열하나번째 줄 시작 -->
+  <td>   <input type="hidden" id="d2" name="d2" onclick="DeckMakeCode1(this)"/>
+    <label for="d2"><span></span></label>
+    <div id="d2text" style="display:none"></div>
+    <img id="d2png" src="" width="100" style="display:none"> </td>
+  <td>   <input type="hidden" id="rd2" name="rd2" onclick="DeckMakeCode2(this)"/>
+    <label for="rd2"><span></span></label>
+    <div id="rd2text" style="display:none"></div>
+    <img id="rd2png" src="" width="100" style="display:none"> </td>
+</tr><!-- 열하나번째 줄 끝 -->
+
+<tr><!-- 열둘번째 줄 시작 -->
+  <td>  <input type="hidden" id="d3" name="d3"  onclick="DeckMakeCode1(this)"/>
+    <label for="d3"><span></span></label>
+    <div id="d3text" style="display:none"></div>
+    <img id="d3png" src="" width="100" style="display:none">  </td>
+  <td>   <input type="hidden" id="rd3" name="rd3" onclick="DeckMakeCode2(this)" />
+    <label for="rd3"><span></span></label>
+    <div id="rd3text" style="display:none"></div>
+    <img id="rd3png" src="" width="100" style="display:none"> </td>
+</tr><!-- 열둘번째 줄 끝 -->
+
+<tr><!-- 열셋번째 줄 시작 -->
+  <td>  </td>
+  <td>  </td>
+</tr><!-- 열셋번째 줄 끝 -->
+</table>
+
+
+
+
+<div class="container">
+<button type="submit" class="btn-3">제출</button>
+</div>
+</form>     
+
+
+<div class="container">
+  <button class="btn-3"  onclick="location.href='index.html'">홈으로</button>
+</div>
+
+
+<script> 
+  function CheckDeck()
+  {
+      var count = 0;
+    
+      // 7개 이상체크
+      for(var i = 0; i < 7;i++)
+      {
+        if(document.getElementById("c"+i).checked)
+        {
+          count++;
+        }
+    
+        if(document.getElementById("rc"+i).checked)
+        {
+          count++;
+        }
+       
+      }
+      if(count != 7)
+      { 
+
+        
+        alert("통상패가 7개 이하입니다.");
+        event.preventDefault();
+        returnToPreviousPage();
+        
+        return false;
+        
+      }
+       
+
+
+      count = 0;
+      // 4개이상체크
+      for(var i = 0; i < 4;i++)
+        {
+          if(document.getElementById("d"+i).checked)
+          {
+            count++;
+          }
+        
+          if(document.getElementById("rd"+i).checked)
+          {
+            count++;
+          }
+       
+        }
+        if(count != 3)
+       {
+        alert("비장패가 3개 이하입니다.");
+        event.preventDefault();
+        returnToPreviousPage();
+        return false;
+      
+        }
+
+        return true;
+
+  } 
+  </script>
+
+
+<script> 
+  function DeckMakeCode1(e)
+  { 
+      var DECKCODE1 = document.getElementById("deckcode1");
+      var temp = 0;
+      var count = 0;
+    
+      // 7개 이상체크
+      for(var i = 0; i < 7;i++)
+      {
+        if(document.getElementById("c"+i).checked)
+        {
+          count++;
+        }
+        if(count > 7)
+        {
+          alert("통상패 7개가 넘어갑니다");
+          document.getElementById(e.id).checked = false;
+          return;
+        }
+        if(document.getElementById("rc"+i).checked)
+        {
+          count++;
+        }
+        if(count > 7)
+        {
+          alert("통상패 7개가 넘어갑니다");
+          document.getElementById(e.id).checked = false;
+          return;
+        }
+      }
+
+
+      count = 0;
+      // 4개이상체크
+      for(var i = 0; i < 4;i++)
+        {
+          if(document.getElementById("d"+i).checked)
+        {
+          count++;
+        }
+        if(count > 3)
+        {
+          alert("비장패 3개가 넘어갑니다");
+          document.getElementById(e.id).checked = false;
+          return;
+        }
+        if(document.getElementById("rd"+i).checked)
+        {
+          count++;
+        }
+        if(count > 3)
+        {
+          alert("비장패 3개가 넘어갑니다");
+          document.getElementById(e.id).checked = false;
+          return;
+        }
+        }
+
+
+
+      for(var i = 0; i < 7;i++)
+      {
+        if(document.getElementById("c"+i).checked)
+        {
+         temp = temp + Math.pow(2,i);
+        }
+      }
+      for(var i = 0; i < 4;i++)
+        {
+          if(document.getElementById("d"+i).checked)
+          {
+            temp = temp + Math.pow(2,i+8);
+          }
+        }
+        DECKCODE1.value = temp;
+
+
+    
+  } 
+  </script>
+
+<script> 
+  function DeckMakeCode2(e)
+  { 
+      var DECKCODE2 = document.getElementById("deckcode2");
+      var temp = 0;
+      var count = 0;
+
+ // 7개 이상체크
+      for(var i = 0; i < 7;i++)
+      {
+        if(document.getElementById("c"+i).checked)
+        {
+          count++;
+        }
+        if(count > 7)
+        {
+          alert(document.getElementById(e.id).checked);
+          document.getElementById(e.id).checked = false;
+          return;
+        }
+        if(document.getElementById("rc"+i).checked)
+        {
+          count++;
+        }
+        if(count > 7)
+        {
+          alert(document.getElementById(e.id).checked);
+          document.getElementById(e.id).checked = false;
+          return;
+        }
+      }
+
+      count = 0;
+      // 4개이상체크
+      for(var i = 0; i < 4;i++)
+        {
+          if(document.getElementById("d"+i).checked)
+        {
+          count++;
+        }
+        if(count > 3)
+        {
+          alert("통상패 3개가 넘어갑니다");
+          document.getElementById(e.id).checked = false;
+          return;
+        }
+        if(document.getElementById("rd"+i).checked)
+        {
+          count++;
+        }
+        if(count > 3)
+        {
+          alert("통상패 3개가 넘어갑니다");
+          document.getElementById(e.id).checked = false;
+          return;
+        }
+        }
+
+      for(var i = 0; i < 7;i++)
+      {
+        if(document.getElementById("rc"+i).checked)
+        {
+         temp = temp + Math.pow(2,i);
+        }
+      }
+      for(var i = 0; i < 4;i++)
+        {
+          if(document.getElementById("rd"+i).checked)
+          {
+            temp = temp + Math.pow(2,i+8);
+          }
+        }
+       
+      DECKCODE2.value = temp;
+  } 
+  </script>
+
+<!-- <script> 
+  function makedeckcode(e)
+  { 
+      var first = document.getElementById(e);
+      var value = document.getElementById("deckcode1");
+     
+      if(first.checked == true)
+      {
+        var flag = 1;
+      }
+      else
+      {
+        var flag = 0;
+      }
+      
+      value.value("501");
+
+       
+     
+  } 
+  </script> -->
+   
+<script> 
+  function chageLangSelect()
+  { 
+      var first = document.getElementById("job1");
+      var second = document.getElementById("job2");
+      var selectValue1 = first.options[first.selectedIndex].value;
+      var selectValue2 = second.options[second.selectedIndex].value;
+      var selectText1 = first.options[first.selectedIndex].text;
+      var selectText2 = second.options[second.selectedIndex].text;
+     // var target = document.getElementById("good");
+     
+      if(selectValue1 != "" && selectValue2 != "")
+      {
+          toggleImg();
+          toggleImg2();
+      }
+
+
+  } 
+  </script>
+  <script>
+      function toggleImg() {
+        
+        var yurinage = ["1.베기", "2.일섬" ,"3.자루 치기","4.거합","5.기백","6.압기","7.기염만장"];
+        var yurinabi = ["S1.월영이 떨어지니","S2.해안엔 파랑 일며","S3.쪽배에서 쉬노니","S4.아마네 유리나의 저력"];
+
+        var sainege =["1.팔방 휘두르기", "2.낫 베기" ,"3.석돌 치기","4.간파","5.권역","6.충음정","7.무음벽"];
+        var sainebi = ["S1.율동호극","S2.항명공진","S3.무음쇄빙","S4.히사메 사이네의 최후의 종극"];
+
+        var himikage =["1.슛", "2.래피드 파이어" ,"3.매그넘 캐논","4.풀 버스트","5.백스탭","6.백 드래프트","7.스모크"];
+        var himikabi = ["S1.레드 블릿","S2.크림즌 제로","S3.스칼렛 이매진","S4.버밀리언 필드"];
+
+        var tokoyoge =["1.빗어 내리기", "2.우아한 타격" ,"3.날뛰는 토끼","4.시의 춤","5.부채 뒤집기","6.바람의 무대","7.맑음의 무대"];
+        var tokoyobi = ["S1.영원한 꽃","S2.천년의 새","S3.무궁한 바람","S4.불변의 달"];
+
+        var first = document.getElementById("job1");
+        var selectValue1 = first.options[first.selectedIndex].value;
+        
+        if(selectValue1 == "1")
+        {
+          var ge = yurinage;
+          var bi = yurinabi;
+        }
+        else if(selectValue1 == "2")
+        {
+          var ge = sainege;
+          var bi = sainebi;
+        }
+        else if(selectValue1 == "3")
+        {
+          var ge = himikage;
+          var bi = himikabi;
+        }
+        else if(selectValue1 == "4")
+        {
+          var ge = tokoyoge;
+          var bi = tokoyobi;
+        }
+
+        for(x in ge)
+        {
+              //document.getElementById("card1").src = "https://main-bakafire.ssl-lolipop.jp/furuyoni/na/images/card/cards/na_01_o_s/na_01_o_s_4.png";
+          document.getElementById("c"+x).type = "checkbox";
+          document.getElementById("c"+x).checked = false;
+          //document.getElementById("c"+x).removeAttribute("checked");
+          document.getElementById("c"+x+"png").style.display = "block";
+          document.getElementById("c"+x+"png").src = "";
+          document.getElementById("c"+x+"text").style.display = "block";
+          document.getElementById("c"+x+"text").innerText= ge[x];
+     
+    
+        }
+
+        for(x in bi)
+        {
+              //document.getElementById("card1").src = "https://main-bakafire.ssl-lolipop.jp/furuyoni/na/images/card/cards/na_01_o_s/na_01_o_s_4.png";
+          document.getElementById("d"+x).type = "checkbox";
+          document.getElementById("d"+x).checked = false;
+        //  document.getElementById("d"+x).onclick = TESTMAKECODE();
+          document.getElementById("d"+x+"png").style.display = "block";
+          document.getElementById("d"+x+"png").src = "";
+          document.getElementById("d"+x+"text").style.display = "block";
+          document.getElementById("d"+x+"text").innerText= bi[x];
+          
+        }
+        
+      
+      }
+    </script>
+    <script>
+      function toggleImg2() {
+        
+        var yurinage = ["1.베기", "2.일섬" ,"3.자루 치기","4.거합","5.기백","6.압기","7.기염만장"];
+        var yurinabi = ["S1.월영이 떨어지니","S2.해안엔 파랑 일며","S3.쪽배에서 쉬노니","S4.아마네 유리나의 저력"];
+
+        var sainege =["1.팔방 휘두르기", "2.낫 베기" ,"3.석돌 치기","4.간파","5.권역","6.충음정","7.무음벽"];
+        var sainebi = ["S1.율동호극","S2.항명공진","S3.무음쇄빙","S4.히사메 사이네의 최후의 종극"];
+
+        var himikage =["1.슛", "2.래피드 파이어" ,"3.매그넘 캐논","4.풀 버스트","5.백스탭","6.백 드래프트","7.스모크"];
+        var himikabi = ["S1.레드 블릿","S2.크림즌 제로","S3.스칼렛 이매진","S4.버밀리언 필드"];
+
+        var tokoyoge =["1.빗어 내리기", "2.우아한 타격" ,"3.날뛰는 토끼","4.시의 춤","5.부채 뒤집기","6.바람의 무대","7.맑음의 무대"];
+        var tokoyobi = ["S1.영원한 꽃","S2.천년의 새","S3.무궁한 바람","S4.불변의 달"];
+
+        var first = document.getElementById("job2");
+        var selectValue1 = first.options[first.selectedIndex].value;
+        
+        if(selectValue1 == "1")
+        {
+          var ge = yurinage;
+          var bi = yurinabi;
+        }
+        else if(selectValue1 == "2")
+        {
+          var ge = sainege;
+          var bi = sainebi;
+        }
+        else if(selectValue1 == "3")
+        {
+          var ge = himikage;
+          var bi = himikabi;
+        }
+        else if(selectValue1 == "4")
+        {
+          var ge = tokoyoge;
+          var bi = tokoyobi;
+        }
+        for(x in ge)
+        {
+              //document.getElementById("card1").src = "https://main-bakafire.ssl-lolipop.jp/furuyoni/na/images/card/cards/na_01_o_s/na_01_o_s_4.png";
+          document.getElementById("rc"+x).type = "checkbox";
+          document.getElementById("rc"+x).checked = false;
+        //  document.getElementById("rc"+x).onclick = TESTMAKECODE();
+          document.getElementById("rc"+x+"png").style.display = "block";
+          document.getElementById("rc"+x+"png").src = "";
+          document.getElementById("rc"+x+"text").style.display = "block";
+          document.getElementById("rc"+x+"text").innerText= ge[x];
+    
+        }
+
+        for(x in bi)
+        {
+              //document.getElementById("card1").src = "https://main-bakafire.ssl-lolipop.jp/furuyoni/na/images/card/cards/na_01_o_s/na_01_o_s_4.png";
+          document.getElementById("rd"+x).type = "checkbox";
+          document.getElementById("rd"+x).checked = false;
+         // document.getElementById("rd"+x).onclick = TESTMAKECODE();
+          document.getElementById("rd"+x+"png").style.display = "block";
+          document.getElementById("rd"+x+"png").src = "";
+          document.getElementById("rd"+x+"text").style.display = "block";
+          document.getElementById("rd"+x+"text").innerText= bi[x];
+          
+        }
+      
+      }
+    </script>
+
+
+
+
+    </body>
+</html>

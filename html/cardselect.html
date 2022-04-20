@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>JavaScript | if</title>
+        <title>나의 웹 사이트</title>
+    </head>
+    <body id="main">
+    
+
+
+        <script> 
+            function chageLangSelect()
+            { 
+                var first = document.getElementById("job1");
+                var second = document.getElementById("job2");
+                var selectValue1 = first.options[first.selectedIndex].value;
+                var selectValue2 = second.options[second.selectedIndex].value;
+                var selectText1 = first.options[first.selectedIndex].text;
+                var selectText2 = second.options[second.selectedIndex].text;
+               // var target = document.getElementById("good");
+               
+                if(selectValue1 != "" && selectValue2 != "")
+                {
+                    
+                    document.write(selectText1+"     "+selectText2);
+                   
+                }
+    
+    
+            } 
+    
+            </script>
+
+
+   
+
+  
+        
+        
+
+    </body>
+</html>
