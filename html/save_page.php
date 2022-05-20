@@ -8,7 +8,8 @@ $megami1= $_GET['job1'];
 $megami2 = $_GET['job2'];
 $deckcode1 = $_GET['deckcode1'];
 $deckcode2 = $_GET['deckcode2'];
-
+$UserName = $_GET['Username'];
+$PassWord = $_GET['PassWord'];
 //Database에 업로드 된 데이터 저장
 //Database를 제어해주는 프로그램(DBMS : MySQL) 사용
 
@@ -30,7 +31,9 @@ $sql="INSERT INTO furuyonidb2(
     megami2,
     deckcode1,
     deckcode2,
-    date
+    date,
+    UserName,
+    Password
     )
     VALUES(
      '$deckname',
@@ -39,7 +42,10 @@ $sql="INSERT INTO furuyonidb2(
      '$megami2',
      '$deckcode1',
      '$deckcode2',
-     Now());";
+     Now(),
+     '$UserName',
+     hex(aes_encrypt('$PassWord','furuyoni'))
+     );";
 
 
 
